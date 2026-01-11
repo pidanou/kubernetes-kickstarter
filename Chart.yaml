@@ -1,0 +1,39 @@
+apiVersion: v2
+name: kubernetes-kickstart
+description: A Helm chart to deploy Kubernetes tools
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+dependencies:
+  - name: argo-cd
+    version: "9.2.4"
+    repository: https://argoproj.github.io/argo-helm
+    condition: argo-cd.enabled
+  - name: external-dns
+    version: "1.20.0"
+    repository: https://kubernetes-sigs.github.io/external-dns/
+    condition: external-dns.enabled
+  - name: external-secrets
+    version: "1.2.1"
+    repository: https://charts.external-secrets.io/
+    condition: external-secrets.enabled
+  - name: alloy
+    version: "1.5.1"
+    repository: https://grafana.github.io/helm-charts
+    condition: alloy.enabled
+  - name: grafana
+    version: "10.5.5"
+    repository: https://grafana.github.io/helm-charts
+    condition: grafana.enabled
+  - name: prometheus
+    version: "28.3.0"
+    repository: oci://ghcr.io/prometheus-community/charts
+    condition: prometheus.enabled
+  - name: loki 
+    version: "6.49.0"
+    repository: https://grafana.github.io/helm-charts
+    condition: loki.enabled
+  - name: tempo
+    version: "1.24.1"
+    repository: https://grafana.github.io/helm-charts
+    condition: tempo.enabled

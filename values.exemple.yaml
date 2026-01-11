@@ -1,0 +1,63 @@
+# https://artifacthub.io/packages/helm/argo/argo-cd
+argo-cd:
+  enabled: false
+
+# https://artifacthub.io/packages/helm/external-dns/external-dns
+external-dns:
+  enabled: false
+  provider:
+    name: cloudflare
+  policy: sync
+  env:
+    - name: CF_API_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: cloudflare-api-key
+          key: apiKey
+
+# https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+external-secrets:
+  enabled: false
+
+# https://artifacthub.io/packages/helm/grafana/alloy
+alloy:
+  enabled: true
+  configMap:
+    content: |-
+      // Write your Alloy config here:
+      logging {
+        level = "info"
+        format = "logfmt"
+      }
+
+# https://artifacthub.io/packages/helm/grafana/grafana
+grafana:
+  enabled: false
+  admin:
+    existingSecret: "grafana-admin"
+    userKey: user
+    passwordKey: password
+
+# https://artifacthub.io/packages/helm/prometheus-community/prometheus
+prometheus:
+  enabled: false
+
+
+# https://grafana.com/docs/loki/latest/setup/install/helm/
+# https://artifacthub.io/packages/helm/grafana/loki
+# Using monolithic single replica mode with minio
+loki:
+  enabled: false
+
+  # Move to S3 or other for production
+  minio:
+    enabled: true
+        
+  deploymentMode: SingleBinary
+
+  singleBinary:
+    replicas: 1
+
+
+tempo:
+  enabled: true

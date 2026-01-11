@@ -1,0 +1,27 @@
+dependencies:
+- name: argo-cd
+  repository: https://argoproj.github.io/argo-helm
+  version: 9.2.4
+- name: external-dns
+  repository: https://kubernetes-sigs.github.io/external-dns/
+  version: 1.20.0
+- name: external-secrets
+  repository: https://charts.external-secrets.io/
+  version: 1.2.1
+- name: alloy
+  repository: https://grafana.github.io/helm-charts
+  version: 1.5.1
+- name: grafana
+  repository: https://grafana.github.io/helm-charts
+  version: 10.5.5
+- name: prometheus
+  repository: oci://ghcr.io/prometheus-community/charts
+  version: 28.3.0
+- name: loki
+  repository: https://grafana.github.io/helm-charts
+  version: 6.49.0
+- name: tempo
+  repository: https://grafana.github.io/helm-charts
+  version: 1.24.1
+digest: sha256:6fd3fe45a7ddce8748bbde5e5171c0e414052760e157b0a22056ad5ee21fe7e2
+generated: "2026-01-11T16:48:19.628469+01:00"

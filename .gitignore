@@ -1,0 +1,5 @@
+.terraform
+state.config
+*.lock.hcl
+terraform.tfvars
+charts
